@@ -1,0 +1,157 @@
+{% load static %}
+<!doctype html>
+<html class="no-js' %}" lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>::VOUI::  Dashboard </title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+
+    <!-- plugin css file  -->
+    <link rel="stylesheet" href="{% static 'assets/plugin/datatables/responsive.dataTables.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugin/datatables/dataTables.bootstrap5.min.css' %}">
+
+    <!-- project css file  -->
+    <link rel="stylesheet" href="{% static 'assets/css/ebazar.style.min.css' %}">
+</head>
+<body>
+    <div id="ebazar-layout" class="theme-blue">
+        
+        <!-- sidebar -->
+        <div class="sidebar px-4 py-4 py-md-4 me-0" id="closedNavbar">
+            <div class="d-flex flex-column h-100">
+                <a href="index.html" class="mb-0 brand-icon">
+                    <span class="logo-icon">
+                        <i class="bi bi-bag-check-fill fs-4"></i>
+                    </span>
+                    <span class="logo-text">VOUI</span>
+                </a>
+                <!-- Menu: main ul -->
+                <ul class="menu-list flex-grow-1 mt-3">
+                    <li><a class="m-link active" href="{% url 'stock:listcategories' %}"       <i class="icofont-home fs-5"></i> <span>Dashboard</span></a></li>
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#categories" href="#">
+                            <i class="icofont-chart-flow fs-5"></i> <span>Categories</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                            <!-- Menu: Sub menu ul -->
+                            <ul class="sub-menu collapse" id="categories">
+                                <li><a class="ms-link" href=" {% url 'stock:listcategories' %}">Categories List</a></li>
+                                <!-- <li><a class="ms-link" href=" {% url 'stock:editcategory' %}">Categories Edit</a></li>
+                                <li><a class="ms-link" href=" {% url 'stock:addcategory' %}">Categories Add</a></li> -->
+                            </ul>
+                    </li>
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-inventory" href="#">
+                            <i class="icofont-brand-general-electric"></i> <span>Brand</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        <!-- Menu: Sub menu ul -->
+                        <ul class="sub-menu collapse" id="menu-inventory">
+                            <li><a class="ms-link"  href=" {% url 'stock:listbrands' %}">Add Brand</a></li>
+                        </ul>
+                    </li> 
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-newarrivals" href="#">
+                            <i class="icofont-brand-general-electric"></i> <span>New Arrivals</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        <!-- Menu: Sub menu ul -->
+                        <ul class="sub-menu collapse" id="menu-newarrivals">
+                            <li><a class="ms-link"  href=" {% url 'stock:listnewarrivals' %}">Add New Arrivals</a></li>
+                        </ul>
+                    </li> 
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-trendingproduct" href="#">
+                            <i class="icofont-brand-general-electric"></i> <span>Trending Products</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        <!-- Menu: Sub menu ul -->
+                        <ul class="sub-menu collapse" id="menu-trendingproduct">
+                            <li><a class="ms-link"  href=" {% url 'stock:listtrending' %}">Add Trending Products</a></li>
+                        </ul>
+                    </li> 
+                    <!--                     
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-product" href="#">
+                            <i class="icofont-truck-loaded fs-5"></i> <span>Products</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        
+                            <ul class="sub-menu collapse" id="menu-product">
+                                <li><a class="ms-link" href=" {% url 'stock:listproductgrid' %}">Product Grid</a></li>
+                                <li><a class="ms-link" href=" {% url 'stock:listProduct' %}">Product List</a></li>
+                                <li><a class="ms-link" href=" {% url 'stock:editproduct' %}">Product Edit</a></li>
+                                <li><a class="ms-link" href=" {% url 'stock:addproduct' %}">Product Add</a></li>
+                            </ul>
+                    </li> -->
+                    
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-order" href="#">
+                        <i class="icofont-notepad fs-5"></i> <span>Orders</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        <!-- Menu: Sub menu ul -->
+                        <ul class="sub-menu collapse" id="menu-order">
+                            <li><a class="ms-link" href=" {% url 'stock:orderlist' %}">Orders List</a></li>
+                            {% comment %} <li><a class="ms-link" href=" {% url 'stock:orderdetails' %}">Order Details</a></li> {% endcomment %}
+                        </ul>
+                    </li>
+                    {% comment %} <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#customers-info" href="#">
+                        <i class="icofont-funky-man fs-5"></i> <span>Customers</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        <!-- Menu: Sub menu ul -->
+                        <ul class="sub-menu collapse" id="customers-info">
+                            <li><a class="ms-link" href="customers.html">Customers List</a></li>
+                            <li><a class="ms-link" href="customer-detail.html">Customers Details</a></li>
+                        </ul>
+                    </li> {% endcomment %}
+                    
+                    
+                   
+                </ul>
+                <!-- Menu: menu collepce btn -->
+                <button type="button" class="btn btn-link sidebar-mini-btn text-light">
+                    <span class="ms-2"><i class="icofont-bubble-right"></i></span>
+                </button>
+            </div>
+        </div>
+        <input type="hidden" class="required form-control" id="categoryID" name="categoryID">
+        <input type="hidden" class="required form-control" id="categoryName" name="categoryName">
+        <input type="hidden" class="required form-control" id="subcategoryID" name="subcategoryID">
+        <input type="hidden" class="required form-control" id="subcategoryName" name="subcategoryName">
+        <input type="hidden" class="required form-control" id="subsubcategoryID" name="subcategoryID">
+        <input type="hidden" class="required form-control" id="subsubcategoryName" name="subcategoryName">
+        <input type="hidden" class="required form-control" id="productID" name="subcategoryID">
+        <input type="hidden" class="required form-control" id="productName" name="productName">
+        <input type="hidden" class="required form-control" id="OptionID" name="OptionID">
+        <input type="hidden" class="required form-control" id="optionName" name="optionName">
+        <input type="hidden" class="required form-control" id="sizeID" name="sizeID">
+        <input type="hidden" class="required form-control" id="SizeName" name="SizeName">
+
+        {% block content %}
+        
+        {% endblock %}
+
+
+    </div>
+    
+    <!-- Jquery Core Js -->
+    <script src="{% static 'assets/bundles/libscripts.bundle.js' %}"></script>
+
+    <!-- Plugin Js -->
+    <script src="{% static 'assets/bundles/apexcharts.bundle.js' %}"></script>
+    <script src="{% static 'assets/bundles/dataTables.bundle.js' %}"></script>  
+    
+
+    <!-- Jquery Page Js -->
+    <script src="{% static 'assets/page/template.js' %}"></script>
+    <script src="{% static 'assets/page/index.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Jr7axGGkwvHRnNfoOzoVRFV3yOPHJEU&amp;callback=myMap"></script>  
+    <script>
+        $('.openbutton').click(function(){
+            if( $('#closedNavbar').hasClass("open")){
+                $('#closedNavbar').removeClass("open")
+            
+            }
+            else{
+                $('#closedNavbar').addClass("open")
+
+            }
+
+        })
+    </script>
+    {% block javascript %}
+    {% endblock %}
+</body>
+</html> 
